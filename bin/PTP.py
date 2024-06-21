@@ -7,8 +7,8 @@ import argparse
 import subprocess
 from subprocess import call
 
-import ete2
-from ete2 import Tree, SeqGroup
+import ete3
+from ete3 import Tree, SeqGroup
 from nexus import NexusReader
 from ptp.ptpllh import lh_ratio_test, exp_distribution, species_setting, exponential_mixture, showTree
 from ptp.summary import partitionparser
@@ -55,7 +55,7 @@ class bootstrap_ptp:
                     if remove:
                         t.prune(self.taxa_order, preserve_branch_length=True)
                 self.trees[i] = t.write()
-        except ValueError, e:
+        except (ValueError) as e:
             print(e)
             print("\n Somthing is wrong with the input outgroup names \n Quiting ...")
             sys.exit()
@@ -337,7 +337,7 @@ if __name__ == "__main__":
         
         print_run_info(args = args)
         
-    except ete2.parser.newick.NewickError:
+    except ete3.parser.newick.NewickError:
         print("Unexisting tree file or Malformed newick tree structure.")
 
 
