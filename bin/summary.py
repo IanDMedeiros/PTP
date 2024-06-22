@@ -152,7 +152,7 @@ def translate2idx(taxon, taxaorder):
     return frozenset(idxs)
 
 
-def add_bayesain_support(delimitation, pmap, taxaorder, numpar):
+def add_bayesian_support(delimitation, pmap, taxaorder, numpar):
     for node in delimitation.root.traverse(strategy='preorder'):
         taxa_list = node.get_leaf_names()
         taxa_idx = translate2idx(taxa_list, taxaorder)
@@ -309,7 +309,7 @@ class partitionparser:
         spe_setting = sp_setting[bestpar]
         
         if plot:
-            spe_setting = add_bayesain_support(delimitation = spe_setting, pmap = pmap, taxaorder =self.taxaorder, numpar = len(tpartitions))
+            spe_setting = add_bayesian_support(delimitation = spe_setting, pmap = pmap, taxaorder =self.taxaorder, numpar = len(tpartitions))
             spe_setting.root.write(features = ["bs"], outfile = fo + ".sh.tre", format = 0)
             showTree(delimitation = spe_setting, scale = self.scale, render = True, fout = fo, form = "svg", show_support = True)
             showTree(delimitation = spe_setting, scale = self.scale, render = True, fout = fo, form = "png", show_support = True)
@@ -319,8 +319,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species " + str(i+1) + " (support = " + "{0:.3f}".format(sup) + ")\n")
-            fo_bestpar.write("     " + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species " + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
         
         return tpartitions[bestpar]
@@ -351,8 +350,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species " + str(i+1) + " (support = " + "{0:.3f}".format(sup) + ")\n")
-            fo_bestpar.write("     " + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species " + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
     
     
@@ -368,7 +366,7 @@ class partitionparser:
         spes, support = self._partition2names(bestpar, bestsupport)
         
         if spe_setting != None and plot:
-            spe_setting = add_bayesain_support(delimitation = spe_setting, pmap = pmap, taxaorder =self.taxaorder, numpar = len(tpartitions))
+            spe_setting = add_bayesian_support(delimitation = spe_setting, pmap = pmap, taxaorder =self.taxaorder, numpar = len(tpartitions))
             spe_setting.root.write(features = ["bs"], outfile = fo + ".ml.tre", format = 0)
             showTree(delimitation = spe_setting, scale = self.scale, render = True, fout = fo, form = "svg", show_support = True)
             showTree(delimitation = spe_setting, scale = self.scale, render = True, fout = fo, form = "png", show_support = True)
@@ -378,16 +376,15 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species " + str(i+1) + " (support = " + "{0:.3f}".format(sup) + ")\n")
-            fo_bestpar.write("     " + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species " + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
     
     
     def _print_list(self, l):
         ss = ""
         for e in l:
-            ss = ss + str(e) + ","
-        return ss[:-1] + "\n"
+            ss = ss + str(e) + "\t"
+        return ss[:-1]
     
     
     def get_taxa_order(self):
