@@ -261,14 +261,14 @@ class partitionparser:
             fo_parts.write(output)
             fo_parts.close()
             
-            """Output the best partition found"""
-            bestpar = self.combine_simple_heuristic(tpartitions = tpartitions, pmap = pmap, idxpars = idxpars, fo = fout + ".PTPhSupportPartition.txt", sp_setting = sp_setting, plot = plot)
+            """Output the best partition found in tabular format and as an input for GGTREE"""
+            bestpar = self.combine_simple_heuristic(tpartitions = tpartitions, pmap = pmap, idxpars = idxpars, fo = fout + ".PTPhSupportPartition.txt", gg = fout + ".PTPhSupportPartition_GGTREE.R", sp_setting = sp_setting, plot = plot)
             
             if bnmi:
-                self.combine_max_NMI(tpartitions = tpartitions, pmap = pmap, fo = fout + ".PTPhNMIPartition.txt")
+                self.combine_max_NMI(tpartitions = tpartitions, pmap = pmap, fo = fout + ".PTPhNMIPartition.txt", gg = fout + ".PTPhSupportPartition_GGTREE.R")
             
             if ML_par != None:
-                self.combine_max_LLH(bestpar = ML_par, tpartitions = tpartitions, pmap = pmap, fo = fout + ".PTPMLPartition.txt", spe_setting = ml_spe_setting, plot = plot)
+                self.combine_max_LLH(bestpar = ML_par, tpartitions = tpartitions, pmap = pmap, fo = fout + ".PTPMLPartition.txt", gg = fout + ".PTPhSupportPartition_GGTREE.R", spe_setting = ml_spe_setting, plot = plot)
             
             """MCMC LLH"""
             if (region >= 1.0 or region <=0) and len(tllhs)>0:
@@ -284,7 +284,7 @@ class partitionparser:
             return None
     
     
-    def combine_simple_heuristic(self, tpartitions, pmap, idxpars, fo, sp_setting = [], plot = True):
+    def combine_simple_heuristic(self, tpartitions, pmap, idxpars, fo, gg, sp_setting = [], plot = True):
         maxw = 0
         bestpar = None
         bestsupport = None
@@ -321,6 +321,22 @@ class partitionparser:
             sup = support[i]
             fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
+
+        gg_bestpar = open(gg, "w")
+        gg_bestpar.write("# R code to define nodes for each putative species in ggtree\n")
+        for i in range(len(spes)):
+            spe = spes[i]
+            sup = support[i]
+            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species")
+            gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
+            gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
+            gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
+            gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
+            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
+            gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
+            gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
+            gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+        gg_bestpar.close()
         
         return tpartitions[bestpar]
     
@@ -352,6 +368,22 @@ class partitionparser:
             sup = support[i]
             fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
+
+        gg_bestpar = open(gg, "w")
+        gg_bestpar.write("# R code to define nodes for each putative species in ggtree\n")
+        for i in range(len(spes)):
+            spe = spes[i]
+            sup = support[i]
+            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species")
+            gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
+            gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
+            gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
+            gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
+            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
+            gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
+            gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
+            gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+        gg_bestpar.close()
     
     
     def combine_max_LLH(self, bestpar, tpartitions, pmap, spe_setting = None, fo = "", plot = True):
@@ -378,6 +410,22 @@ class partitionparser:
             sup = support[i]
             fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
+
+        gg_bestpar = open(gg, "w")
+        gg_bestpar.write("# R code to define nodes for each putative species in ggtree\n")
+        for i in range(len(spes)):
+            spe = spes[i]
+            sup = support[i]
+            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species")
+            gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
+            gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
+            gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
+            gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
+            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
+            gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
+            gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
+            gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+        gg_bestpar.close()
     
     
     def _print_list(self, l):
@@ -385,7 +433,18 @@ class partitionparser:
         for e in l:
             ss = ss + str(e) + "\t"
         return ss[:-1]
-    
+
+    def _print_list_gg(self, l):
+        ss = ""
+        for e in l:
+            ss = ss + "\'" + str(e) +  "\'" + ","
+        return ss[:-1]
+
+    def _print_list_gg1(self, l):
+        ss = ""
+        for e in l:
+            ss = ss + str(e) + ","
+        return ss[:-1]
     
     def get_taxa_order(self):
         return self.taxaorder
