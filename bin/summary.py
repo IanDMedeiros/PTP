@@ -324,18 +324,22 @@ class partitionparser:
 
         gg_bestpar = open(gg, "w")
         gg_bestpar.write("# R code to define nodes for each putative species in ggtree" + "\n")
+        gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
+        gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
+        gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
+        gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
+        gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
+        gg_bestpar.write("# Find MRCA node number for each PTP-defined species" + "\n")
+        
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
-            gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
-            gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
-            gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
-            gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
             gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
-            gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-            gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
-            gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+
+        gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
+        gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
         gg_bestpar.close()
         
         return tpartitions[bestpar]
@@ -371,18 +375,22 @@ class partitionparser:
 
         gg_bestpar = open(gg, "w")
         gg_bestpar.write("# R code to define nodes for each putative species in ggtree" + "\n")
+        gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
+        gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
+        gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
+        gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
+        gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
+        gg_bestpar.write("# Find MRCA node number for each PTP-defined species" + "\n")
+        
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
-            gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
-            gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
-            gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
-            gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
             gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
-            gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-            gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
-            gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+
+        gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
+        gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
         gg_bestpar.close()
     
     
@@ -413,18 +421,22 @@ class partitionparser:
 
         gg_bestpar = open(gg, "w")
         gg_bestpar.write("# R code to define nodes for each putative species in ggtree" + "\n")
+        gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
+        gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
+        gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
+        gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
+        gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
+        gg_bestpar.write("# Find MRCA node number for each PTP-defined species" + "\n")
+        
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
-            gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
-            gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
-            gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
-            gg_bestpar.write("cladeListStart$node <- as.numeric(cladeListStart$node)" + "\n" + "\n")
             gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
-            gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-            gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
-            gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+
+        gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
+        gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
         gg_bestpar.close()
     
     
