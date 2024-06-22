@@ -1,3 +1,12 @@
+## EDITS and INSTALLATION instructions that worked for setting up bPTP on OSX
+```
+conda config --add channels conda-forge
+conda config --add channels bioconda
+conda create -n bptp python=3.6 ete3 numpy scipy setuptools docutils six pytest matplotlib lxml pyqt
+cd /PATH/TO/miniconda3/envs/bptp
+git clone 
+```
+=========================================================================
 A Bayesian implementation of the Poisson tree processes (PTP) model for 
 species delimitation.
 
