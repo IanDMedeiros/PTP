@@ -323,11 +323,11 @@ class partitionparser:
         fo_bestpar.close()
 
         gg_bestpar = open(gg, "w")
-        gg_bestpar.write("# R code to define nodes for each putative species in ggtree\n")
+        gg_bestpar.write("# R code to define nodes for each putative species in ggtree" + "\n")
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species")
+            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
             gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
             gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
             gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
@@ -370,11 +370,11 @@ class partitionparser:
         fo_bestpar.close()
 
         gg_bestpar = open(gg, "w")
-        gg_bestpar.write("# R code to define nodes for each putative species in ggtree\n")
+        gg_bestpar.write("# R code to define nodes for each putative species in ggtree" + "\n")
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species")
+            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
             gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
             gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
             gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
@@ -412,11 +412,11 @@ class partitionparser:
         fo_bestpar.close()
 
         gg_bestpar = open(gg, "w")
-        gg_bestpar.write("# R code to define nodes for each putative species in ggtree\n")
+        gg_bestpar.write("# R code to define nodes for each putative species in ggtree" + "\n")
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species")
+            gg_bestpar.write("# Create an empty data frame that will be used to generate the species|node df for each PTP-defined species" + "\n")
             gg_bestpar.write("cladeListStart <- data.frame(matrix(ncol = 2, nrow = 0))" + "\n")
             gg_bestpar.write("colnames(cladeListStart) <- c(\"label\", \"node\")" + "\n")
             gg_bestpar.write("cladeListStart$label <- as.character(cladeListStart$label)" + "\n")
