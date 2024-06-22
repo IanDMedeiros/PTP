@@ -3,12 +3,18 @@
 conda config --add channels conda-forge
 conda config --add channels bioconda
 conda create -n bptp python=3.6 ete3 numpy scipy setuptools docutils six pytest matplotlib lxml pyqt
-cd /PATH/TO/miniconda3/envs/bptp
+cd ~/miniconda3/envs/bptp
 git clone https://github.com/IanDMedeiros/PTP.git
+ln -s ~/miniconda3/envs/bptp/PTP/bin/PTP.py ~/miniconda3/envs/bptp/bin/PTP.py
+ln -s ~/miniconda3/envs/bptp/PTP/bin/bPTP.py ~/miniconda3/envs/bptp/bin/bPTP.py
+ln -s ~/miniconda3/envs/bptp/PTP/bin/summary.py ~/miniconda3/envs/bptp/bin/summary.py
+ln -s ~/miniconda3/envs/bptp/PTP/bin/raxmlHPC-PTHREADS-AVX ~/miniconda3/envs/bptp/bin/raxmlHPC-PTHREADS-AVX
+ln -s ~/miniconda3/envs/bptp/PTP/bin/raxmlHPC-PTHREADS-SSE3 ~/miniconda3/envs/bptp/bin/raxmlHPC-PTHREADS-SSE3
 ```
 
 ### Original README
 =========================================================================
+
 A Bayesian implementation of the Poisson tree processes (PTP) model for 
 species delimitation.
 
@@ -18,6 +24,7 @@ Before reading the following text, please check:
 https://github.com/zhangjiajie/SpeciesCounting for latest updates
 
 =========================================================================
+
 (0) What's new
     
     I implemented a Markov chain Monte Carlo sampler for the PTP model - 
