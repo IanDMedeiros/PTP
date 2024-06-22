@@ -319,7 +319,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species " + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
         
         return tpartitions[bestpar]
@@ -350,7 +350,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species " + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
     
     
@@ -376,7 +376,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species " + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
         fo_bestpar.close()
     
     
