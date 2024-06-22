@@ -11,7 +11,7 @@ import ete3
 from ete3 import Tree, SeqGroup
 from nexus import NexusReader
 from ptp.ptpllh import lh_ratio_test, exp_distribution, species_setting, exponential_mixture, showTree
-from ptp.summary import partitionparser
+from summary import partitionparser
 
 class bootstrap_ptp:
     """Run MCMC on multiple trees"""
