@@ -337,8 +337,8 @@ class partitionparser:
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-        gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
-        gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + _print_list_gg(len(spes)) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + _print_list_gg1(len(spes)) + ")))" + "\n")
         gg_bestpar.close()
         
         return tpartitions[bestpar]
@@ -387,8 +387,8 @@ class partitionparser:
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-        gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
-        gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + _print_list_gg(len(spes)) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + _print_list_gg1(len(spes)) + ")))" + "\n")
         gg_bestpar.close()
     
     
@@ -432,8 +432,8 @@ class partitionparser:
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-        gg_bestpar.write("  label=as.character(c(" + self._print_list_gg(spe) + "))," + "\n")
-        gg_bestpar.write("  node=as.numeric(c(" + self._print_list_gg1(spe) + ")))" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + _print_list_gg(len(spes)) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + _print_list_gg1(len(spes)) + ")))" + "\n")
         gg_bestpar.close()
     
     
