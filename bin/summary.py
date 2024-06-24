@@ -337,8 +337,8 @@ class partitionparser:
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-        gg_bestpar.write("  label=as.character(c(" + print_list_gg(len(spes)) + "))," + "\n")
-        gg_bestpar.write("  node=as.numeric(c(" + print_list_gg1(len(spes)) + ")))" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + self.print_list_gg(len(spes)) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + self.print_list_gg1(len(spes)) + ")))" + "\n")
         gg_bestpar.close()
         
         return tpartitions[bestpar]
@@ -387,8 +387,8 @@ class partitionparser:
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-        gg_bestpar.write("  label=as.character(c(" + print_list_gg(len(spes)) + "))," + "\n")
-        gg_bestpar.write("  node=as.numeric(c(" + print_list_gg1(len(spes)) + ")))" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + self.print_list_gg(len(spes)) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + self.print_list_gg1(len(spes)) + ")))" + "\n")
         gg_bestpar.close()
     
     
@@ -432,8 +432,8 @@ class partitionparser:
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
-        gg_bestpar.write("  label=as.character(c(" + print_list_gg(len(spes)) + "))," + "\n")
-        gg_bestpar.write("  node=as.numeric(c(" + print_list_gg1(len(spes)) + ")))" + "\n")
+        gg_bestpar.write("  label=as.character(c(" + self.print_list_gg(len(spes)) + "))," + "\n")
+        gg_bestpar.write("  node=as.numeric(c(" + self.print_list_gg1(len(spes)) + ")))" + "\n")
         gg_bestpar.close()
     
     
@@ -449,13 +449,13 @@ class partitionparser:
             ss = ss + str(e) + ","
         return ss[:-1]
 
-    def print_list_gg(i):
+    def print_list_gg(self, i):
         ss = ""
         for e in range(i):
             ss = ss + "\'" + "Species_" + str(e+1) +  "\'" + ","
         return ss[:-1]
 
-    def print_list_gg1(i):
+    def print_list_gg1(self, i):
         ss = ""
         for e in range(i):
             ss = ss + "Species_" + str(e+1) + ","
