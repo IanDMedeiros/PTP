@@ -163,9 +163,9 @@ Version 2.2 released by Jiajie Zhang on 14-02-2014.""",
     
     parser.add_argument("-t", dest = "stree",
                         metavar = "TREE",
-                        help = """Input phylogenetic tree file. Tree can be both rooted or unrooted, 
+                        help = """Input phylogenetic tree file. Tree can be either rooted or unrooted; 
                         if unrooted, please use -r option. Supported format: NEXUS (trees without annotation),
-                        RAxML (simple Newick foramt). If the input file contains multiple trees, the program 
+                        RAxML (simple Newick format). If the input file contains multiple trees, the program 
                         will do bootstrap analysis""",
                         required = True)
     
@@ -217,7 +217,7 @@ Version 2.2 released by Jiajie Zhang on 14-02-2014.""",
                         action="store_true")
     
     parser.add_argument("-w", dest = "whiten",
-                        help = """Specify this option to normalize the No.sequenes of each species 
+                        help = """Specify this option to normalize the No.sequences of each species 
                         from the first run and re-run the program""",
                         default = False,
                         action="store_true")
