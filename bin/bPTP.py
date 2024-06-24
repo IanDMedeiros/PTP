@@ -273,9 +273,9 @@ Version 0.51 released by Jiajie Zhang on 17-02-2014.""",
                         prog= "python bPTP.py")
     
     parser.add_argument("-t", dest = "trees", 
-                        help = """Input phylogenetic tree file. Trees can be both rooted or unrooted, 
+                        help = """Input phylogenetic tree file. Trees can be either rooted or unrooted; 
                         if unrooted, please use -r option. Supported format: NEXUS (trees without annotation),
-                        RAxML (simple Newick foramt)""",
+                        RAxML (simple Newick format)""",
                         required = True)
     
     parser.add_argument("-o", dest = "output",
