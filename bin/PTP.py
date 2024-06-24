@@ -298,7 +298,7 @@ if __name__ == "__main__":
             print("The pipeline uses RAxML to infer phylogenetic trees,")
             print("please download the latest source code from: ")
             print("https://github.com/stamatak/standard-RAxML")
-            print("Please complie the SSE + PTHREAD version, ")
+            print("Please complile the SSE + PTHREAD version, ")
             print("rename the executable to raxmlHPC-PTHREADS-SSE3 and put it to bin/  \n")
             sys.exit() 
         print("Building phylogenetic tree using RAxML.")
