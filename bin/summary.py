@@ -446,7 +446,7 @@ class partitionparser:
     def _print_list_c(self, l):
         ss = ""
         for e in l:
-            ss = ss + str(e) + ","
+            ss = ss + + "\'" str(e) + "\'" + ","
         return ss[:-1]
 
     def print_list_gg(self, i):
