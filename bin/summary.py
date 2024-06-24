@@ -333,7 +333,7 @@ class partitionparser:
         
         for i in range(len(spes)):
             spe = spes[i]
-            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
+            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(len(spes)) + ")" + "\n")
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
@@ -383,7 +383,7 @@ class partitionparser:
         
         for i in range(len(spes)):
             spe = spes[i]
-            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
+            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(len(spes)) + ")" + "\n")
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
@@ -428,7 +428,7 @@ class partitionparser:
         
         for i in range(len(spes)):
             spe = spes[i]
-            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
+            gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(len(spes)) + ")" + "\n")
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
         gg_bestpar.write("PTP_clades <- cladeListStart %>% add_row(" + "\n")
