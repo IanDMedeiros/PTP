@@ -319,7 +319,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + "\t" + self._print_list(spe) + "\n")
         fo_bestpar.close()
 
         gg_bestpar = open(gg, "w")
@@ -333,7 +333,6 @@ class partitionparser:
         
         for i in range(len(spes)):
             spe = spes[i]
-            sup = support[i]
             gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
@@ -345,7 +344,7 @@ class partitionparser:
         return tpartitions[bestpar]
     
     
-    def combine_max_NMI(self, tpartitions, pmap, fo = ""):
+    def combine_max_NMI(self, tpartitions, pmap, fo = "", gg = ""):
         bestpar = None 
         hnmi = 0.0 
         for parx in tpartitions:
@@ -370,7 +369,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + "\t" + self._print_list(spe) + "\n")
         fo_bestpar.close()
 
         gg_bestpar = open(gg, "w")
@@ -384,7 +383,6 @@ class partitionparser:
         
         for i in range(len(spes)):
             spe = spes[i]
-            sup = support[i]
             gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
@@ -394,7 +392,7 @@ class partitionparser:
         gg_bestpar.close()
     
     
-    def combine_max_LLH(self, bestpar, tpartitions, pmap, spe_setting = None, fo = "", plot = True):
+    def combine_max_LLH(self, bestpar, tpartitions, pmap, spe_setting = None, fo = "", gg = "", plot = True):
         idxpar = self._convert2idx(bestpar)
         bestsupport = [0.0] * self.numtaxa
         for par in idxpar:
@@ -416,7 +414,7 @@ class partitionparser:
         for i in range(len(spes)):
             spe = spes[i]
             sup = support[i]
-            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + \t + self._print_list(spe) + "\n")
+            fo_bestpar.write("Species_" + str(i+1) + "\t" + "{0:.3f}".format(sup) + "\t" + self._print_list(spe) + "\n")
         fo_bestpar.close()
 
         gg_bestpar = open(gg, "w")
@@ -430,7 +428,6 @@ class partitionparser:
         
         for i in range(len(spes)):
             spe = spes[i]
-            sup = support[i]
             gg_bestpar.write("Species_" + str(i+1) + " <- MRCA(TREE_OBJECT, .node1=c(" + self._print_list_gg(spe) + ")" + "\n")
 
         gg_bestpar.write("# Combine MRCA node numbers into a single data frame" + "\n")
@@ -449,13 +446,13 @@ class partitionparser:
     def _print_list_gg(self, l):
         ss = ""
         for e in l:
-            ss = ss + "\'" + str(e) +  "\'" + ","
+            ss = ss + "\'" + "Species_" + str(e+1) +  "\'" + ","
         return ss[:-1]
 
     def _print_list_gg1(self, l):
         ss = ""
         for e in l:
-            ss = ss + str(e) + ","
+            ss = ss + "Species_" + str(e+1) + ","
         return ss[:-1]
     
     def get_taxa_order(self):
